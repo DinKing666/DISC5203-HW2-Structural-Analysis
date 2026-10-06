@@ -9,6 +9,7 @@ import numpy as np
 
 
 ROOT = Path(__file__).resolve().parents[1]
+HW1_ROOT = ROOT.parent / "HW1_reference"
 RESULTS = ROOT / "output" / "results"
 MODELS = RESULTS / "models"
 FIG_DIR = ROOT / "output" / "figures"
@@ -64,7 +65,7 @@ def main():
     write_csv(RESULTS / "hw2_model_summary.csv", summaries)
     write_csv(RESULTS / "hw2_support_reactions.csv", reactions)
 
-    hw1 = {r["id"]: r for r in read_csv(RESULTS / "element_loads.csv")}
+    hw1 = {r["id"]: r for r in read_csv(HW1_ROOT / "output" / "results" / "element_loads.csv")}
     mapping = {
         "A": [("G00", "T1"), ("G01", "C1"), ("G02", "C4"), ("G03", "T10")],
         "B": [("G01", "C1"), ("G11", "T5"), ("G21", "C2"), ("G31", "C3")],

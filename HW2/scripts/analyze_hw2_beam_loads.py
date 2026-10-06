@@ -9,15 +9,27 @@ import numpy as np
 from matplotlib.colors import ListedColormap
 from matplotlib.lines import Line2D
 from shapely import contains_xy
-
-from analyze_floor_plan import load_geometry
+from shapely.geometry import Polygon
+from shapely.ops import unary_union
 
 
 ROOT = Path(__file__).resolve().parents[1]
+HW1_ROOT = ROOT.parent / "HW1_reference"
+HW1_CONFIG = HW1_ROOT / "config" / "plan1_geometry.json"
 CONFIG = ROOT / "config" / "hw2_beams.json"
 FIG_DIR = ROOT / "output" / "figures"
 RESULT_DIR = ROOT / "output" / "results"
 INTERMEDIATE_DIR = ROOT / "output" / "intermediate"
+
+
+def load_geometry():
+    """Reuse the immutable HW1 floor geometry from the adjacent baseline snapshot."""
+    with HW1_CONFIG.open(encoding="utf-8") as f:
+        cfg = json.load(f)
+    slab = Polygon(cfg["outline"])
+    slab = unary_union([slab, *(Polygon(p) for p in cfg["additions"])])
+    openings = unary_union([Polygon(p) for p in cfg["openings"]])
+    return cfg, slab, openings, slab.difference(openings)
 
 
 def beam_inventory(cfg):

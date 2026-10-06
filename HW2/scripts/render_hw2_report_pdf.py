@@ -144,10 +144,10 @@ def main():
               P("Figure. Magnitude difference between the 2D marked strips and HW1 whole-floor estimates.", "cap"),
               P("Compression sign agrees at every mapped support, but the magnitude is not within a few percent. HW1 includes the whole-floor nearest-support load and aggregated walls; each HW2 result contains only one marked strip and omits perpendicular beam paths. No load was tuned. The subframe is used for the beam design question; exact cross-model reconciliation requires a 3D grid or common nodal aggregation."),
               P("8. Agent workflow and reproducibility", "h1"),
-              P("The word briefings were frozen before code generation. The agent transcribed them into four OpenSees entry files plus an audited shared implementation. Gates were: identify the deck, freeze loads, check units and signs, verify qL2 bounds, replace supports by columns, close equilibrium, compare HW1 axials, then leave Git commit/upload pending student review."),
+              P("The word briefings were frozen before code generation. The agent transcribed them into four OpenSees entry files plus an audited shared implementation. Gates were: identify the deck, freeze loads, check units and signs, verify qL2 bounds, replace supports by columns, close equilibrium, compare HW1 axials, then verify the independent HW2 repository before upload."),
               P("Run: analyze_hw2_beam_loads.py; run_hw2_models.py; summarize_hw2_models.py; build_hw2_report.py; render_hw2_report_pdf.py; verify_hw2_outputs.py."),
               P("Limitations", "h2"), P("The plan is raster; beam size and uncracked stiffness are assumptions; the subframes are 2D strips; and the student must add a literal handwritten/signature sheet if required. These limits are preserved rather than concealed."),
-              P("Conclusion", "h1"), P("All required beam census, tributary areas, line loads, four OpenSees cases, N/V/M and deformation diagrams, reactions, hand bounds, prompt record, HW1 cross-check and reproducibility files are present. The repository remains uncommitted and unuploaded until student sign-off.")]
+              P("Conclusion", "h1"), P("All required beam census, tributary areas, line loads, four OpenSees cases, N/V/M and deformation diagrams, reactions, hand bounds, prompt record, HW1 cross-check and reproducibility files are present in the independent HW2 folder; the accepted HW1 snapshot remains separate and unchanged.")]
     doc.build(story)
     print(OUT)
 
